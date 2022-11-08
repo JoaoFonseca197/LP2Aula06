@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BearAdapter", "BearAdapter\BearAdapter.csproj", "{A741001D-0074-439D-BE04-9B8FC989F7B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Descompressor", "Descompressor\Descompressor.csproj", "{5BE5C235-4BC7-4BA0-81AB-222C6CFB1098}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{A741001D-0074-439D-BE04-9B8FC989F7B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A741001D-0074-439D-BE04-9B8FC989F7B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A741001D-0074-439D-BE04-9B8FC989F7B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BE5C235-4BC7-4BA0-81AB-222C6CFB1098}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BE5C235-4BC7-4BA0-81AB-222C6CFB1098}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BE5C235-4BC7-4BA0-81AB-222C6CFB1098}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BE5C235-4BC7-4BA0-81AB-222C6CFB1098}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
