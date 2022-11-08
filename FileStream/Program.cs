@@ -1,0 +1,112 @@
+﻿using System;
+using System.IO;
+
+namespace FileStreams
+{
+    public class Program
+    {
+        // Nomes dos ficheiros
+        private const string filenameText = "dados.txt";
+        private const string filenameBinary = "dados.bin";
+
+        // Dados a escrever e ler nos ficheiros
+        private const string dataString = "Hello world!";
+        private const int dataInt = 18;
+        private const float dataFloat = 3.1415f;
+
+        private static void Main()
+        {
+            // String para onde ler opção inserida pelo utilizador
+            string option;
+
+            // Ciclo do menu principal
+            do
+            {
+                // Apresentar menu principal
+                Console.WriteLine("==== Que programa devo executar? ==== \n");
+                Console.WriteLine("\t1. Escreve ficheiro em modo de texto");
+                Console.WriteLine("\t2. Lê ficheiro em modo de texto");
+                Console.WriteLine("\t3. Escreve ficheiro em modo binário");
+                Console.WriteLine("\t4. Lê ficheiro em modo binário");
+                Console.WriteLine("\t5. Sair");
+                Console.Write("\n>");
+
+                // Solicitar opção ao utilizador
+                option = Console.ReadLine();
+
+                // Tratar opção do utilizador
+                switch (option)
+                {
+                    case "1":
+                        EscreverTexto(); break;
+                    case "2":
+                        LerTexto(); break;
+                    case "3":
+                        EscreverBin(); break;
+                    case "4":
+                        LerBin(); break;
+                    case "5":
+                        Console.WriteLine("Obrigado e até à próxima!");
+                        break;
+                    default:
+                        Console.WriteLine("**** Opção inválida! ****");
+                        break;
+                }
+
+                Console.WriteLine(
+                    "Pressione qualquer tecla para continuar...");
+                Console.ReadKey();
+
+            } while (option != "5");
+        }
+
+        // 1. Escreve ficheiro em modo de texto
+        private static void EscreverTexto()
+        {
+            TextWriter sw = File.CreateText(Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+            filenameText));
+            sw.WriteLine(dataString);
+            sw.WriteLine(dataInt);
+            sw.WriteLine(dataFloat);
+            sw.Close();
+        }
+
+        // 2. Lê ficheiro em modo de texto
+        private static void LerTexto()
+        {
+            TextReader sw = File.OpenText(Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+            filenameText));
+            Console.WriteLine(sw.ReadLine());
+            Console.WriteLine(Convert.ToInt32(sw.ReadLine()));
+            Console.WriteLine(Convert.ToSingle(sw.ReadLine()));
+            sw.Close();
+        }
+
+        // 3. Escreve ficheiro em modo binário
+        private static void EscreverBin()
+        {
+            BinaryWriter sw = File.CreateText(Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+            filenameText));
+            sw.WriteLine(dataString);
+            sw.WriteLine(dataInt);
+            sw.WriteLine(dataFloat);
+            sw.Close();
+
+        }
+
+        // 4. Lê ficheiro em modo binário
+        private static void LerBin()
+        {
+            BinaryReader sw = File.OpenText(Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+            filenameText));
+            Console.WriteLine(sw.ReadString());
+            Console.WriteLine(sw.ReadInt32(sw.ReadLine()));
+            Console.WriteLine(sw.ReadSingle(sw.ReadLine()));
+            sw.Close();
+        }
+    }
+}
