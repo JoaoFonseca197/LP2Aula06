@@ -98,8 +98,8 @@ namespace FileStreams
         // 4. Lê ficheiro em modo binário
         private static void LerBin()
         {
-             BinaryReader br = new BinaryReader(
-                File.Open(filenameBinary, FileMode.Open));
+            BinaryReader br = new BinaryReader(
+            File.Open(filenameBinary, FileMode.Open));
             Console.WriteLine(br.ReadString());
             Console.WriteLine(br.ReadInt32());
             Console.WriteLine(br.ReadSingle());

@@ -78,12 +78,12 @@ namespace Descompressor
             string line;
 
             // Criar um ficheiro em modo escrita
-            FileStream fs = new FileStream(
+            using Stream fs = new FileStream(
                 ficheiro, FileMode.Open, FileAccess.Write);
             // Decorar o ficheiro com um compressor para o formato GZip
-            GZipStream gzs = new GZipStream(fs, CompressionLevel.Optimal);
+            using Stream gzs = new GZipStream(fs, CompressionLevel.Optimal);
             // Adaptar o compressor para escrita em modo de texto
-            StreamWriter sw = new StreamWriter(gzs);
+            using TextWriter sw = new StreamWriter(gzs);
 
             // Pedir ao utilizador para inserir várias linhas de texto que
             // serão guardadas no ficheiro comprimido
@@ -96,7 +96,7 @@ namespace Descompressor
             }
 
             // Fechar ficheiro
-            sw.Close();
+
         }
 
         // Descomprimir texto no ficheiro e mostrar no ecrã
@@ -106,11 +106,11 @@ namespace Descompressor
             string line;
 
             // Criar um ficheiro em modo leitura
-            Stream fs = new FileStream(ficheiro, FileMode.Open, FileAccess.Read);
+            using Stream fs = new FileStream(ficheiro, FileMode.Open, FileAccess.Read);
             // Decorar o ficheiro com um compressor para o formato GZip
-            Stream gzs = new GZipStream(fs, CompressionMode.Decompress);
+            using Stream gzs = new GZipStream(fs, CompressionMode.Decompress);
             // Adaptar o compressor para leitura em modo de texto
-            TextReader sr = new StreamReader(gzs);
+            using TextReader sr = new StreamReader(gzs);
 
             // Percorrer linhas e imprimi-las no ecrã
             while ((line = sr.ReadLine()) != null)
