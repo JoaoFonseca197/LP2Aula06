@@ -87,12 +87,10 @@ namespace FileStreams
         // 3. Escreve ficheiro em modo binário
         private static void EscreverBin()
         {
-            BinaryWriter sw = File.CreateText(Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-            filenameText));
-            sw.WriteLine(dataString);
-            sw.WriteLine(dataInt);
-            sw.WriteLine(dataFloat);
+            BinaryWriter sw = new BinaryWriter(File.Create(filenameBinary));
+            sw.Write(dataString);
+            sw.Write(dataInt);
+            sw.Write(dataFloat);
             sw.Close();
 
         }
@@ -100,13 +98,12 @@ namespace FileStreams
         // 4. Lê ficheiro em modo binário
         private static void LerBin()
         {
-            BinaryReader sw = File.OpenText(Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
-            filenameText));
-            Console.WriteLine(sw.ReadString());
-            Console.WriteLine(sw.ReadInt32(sw.ReadLine()));
-            Console.WriteLine(sw.ReadSingle(sw.ReadLine()));
-            sw.Close();
+             BinaryReader br = new BinaryReader(
+                File.Open(filenameBinary, FileMode.Open));
+            Console.WriteLine(br.ReadString());
+            Console.WriteLine(br.ReadInt32());
+            Console.WriteLine(br.ReadSingle());
+            br.Close();
         }
     }
 }
